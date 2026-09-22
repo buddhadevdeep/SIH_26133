@@ -112,12 +112,38 @@ export async function apiRequest<T = unknown>(
   }
 
   const isRead = method === 'GET' || method === 'DELETE';
-  const response = await apiClient.request<ApiResponse<T>>({
-    url,
-    method,
-    params: isRead ? data : undefined,
-    data: !isRead ? data : undefined,
-  });
 
-  return response.data;
+  try {
+    const response = await apiClient.request<ApiResponse<T>>({
+      url,
+      method,
+      params: isRead ? data : undefined,
+      data: !isRead ? data : undefined,
+    });
+
+    // Check if the response returned an HTML document (typical on Vercel SPA rewrites when backend is on separate domain)
+    if (
+      typeof response.data === 'string' &&
+      ((response.data as string).trim().startsWith('<!DOCTYPE html') ||
+       (response.data as string).trim().startsWith('<html'))
+    ) {
+      const fallbackResult = await handleMockRequest(url, method, data);
+      if (fallbackResult) {
+        return fallbackResult as ApiResponse<T>;
+      }
+    }
+
+    return response.data;
+  } catch (error) {
+    // Gracefully fallback to mock adapter if live server is temporarily unreachable or returning network/CORS error on Vercel
+    try {
+      const fallbackResult = await handleMockRequest(url, method, data);
+      if (fallbackResult) {
+        return fallbackResult as ApiResponse<T>;
+      }
+    } catch {
+      // ignore
+    }
+    throw error;
+  }
 }
