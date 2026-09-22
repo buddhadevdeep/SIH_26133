@@ -1,0 +1,11 @@
+{
+  "name": "sih-healthconnect-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "powershell -ExecutionPolicy Bypass -File ./start_all.ps1",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontEnd && npm run dev",
+    "dev:ml": "cd M2 && python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --reload"
+  }
+}

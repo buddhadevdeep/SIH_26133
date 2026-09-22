@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-50: #f0f6fa;
+  --color-teal-100: #e1eff8;
+  --color-teal-200: #c6e0f2;
+  --color-teal-300: #9ccbea;
+  --color-teal-400: #6caede;
+  --color-teal-500: #4792ce;
+  --color-teal-600: #3378b6;
+  --color-teal-700: #2b6cb0;
+  --color-teal-800: #24578e;
+  --color-teal-900: #214974;
+  --color-teal-950: #172e4b;
+
+  --color-emerald-50: #f0f6fa;
+  --color-emerald-100: #e1eff8;
+  --color-emerald-200: #c6e0f2;
+  --color-emerald-300: #9ccbea;
+  --color-emerald-400: #6caede;
+  --color-emerald-500: #4792ce;
+  --color-emerald-600: #3378b6;
+  --color-emerald-700: #2b6cb0;
+  --color-emerald-800: #24578e;
+  --color-emerald-900: #214974;
+  --color-emerald-950: #172e4b;
+
+  --color-green-50: #f0f6fa;
+  --color-green-100: #e1eff8;
+  --color-green-200: #c6e0f2;
+  --color-green-300: #9ccbea;
+  --color-green-400: #6caede;
+  --color-green-500: #4792ce;
+  --color-green-600: #3378b6;
+  --color-green-700: #2b6cb0;
+  --color-green-800: #24578e;
+  --color-green-900: #214974;
+  --color-green-950: #172e4b;
+}
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --background: 210 33% 97%; /* #F4F8FA - Serene Cool Medical Ice-Blue Slate */
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 209 60% 43%; /* #2B6CB0 - Medical Steel Blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 209 60% 43%; /* #2B6CB0 - Medical Steel Blue Accent */
+    --accent-foreground: 0 0% 100%;
+    --navy: 216 55% 24%; /* #1B365D - Slate Navy */
+    --ice-bg: 207 55% 95%; /* #E8F2FA - Soft Ice-Blue */
+    --destructive: 0 84% 60%; /* #EF4444 - Emergency */
+    --destructive-foreground: 210 40% 98%;
+    --warning: 38 92% 50%; /* #F59E0B - Waiting Amber */
+    --success: 209 60% 43%; /* #2B6CB0 - Positive Clinical State */
+    --border: 214 30% 92%; /* #E2EDF3 - Soft Cool Border */
+    --input: 214 30% 92%;
+    --ring: 209 60% 43%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 173 70% 40%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --warning: 38 92% 50%;
+    --success: 152 76% 40%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 173 70% 40%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
+    border: none;
+  }
+}
+
+/* Leaflet maps styling fix */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  border-radius: 0.5rem;
+}
+
+.leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Custom scrollbars for data tables and sidebars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+/* High contrast clinical focus outline */
+:focus-visible {
+  outline: 2px solid #2b6cb0;
+  outline-offset: 2px;
+}
+
+/* Seamless Google Translate stealth styling */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-te-spinner-pos {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0.01 !important;
+  pointer-events: none !important;
+}
+
+/* ==========================================================================
+   PURE WHITE DROPDOWN UI (SYSTEM-WIDE)
+   ========================================================================== */
+
+/* All select dropdown inputs across the platform */
+select,
+.select-pure-white {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+  background-position: right 0.75rem center !important;
+  background-repeat: no-repeat !important;
+  background-size: 1.15em 1.15em !important;
+  padding-right: 2.25rem !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: #94a3b8 !important;
+  background-color: #ffffff !important;
+}
+
+select:focus,
+select:focus-visible {
+  border-color: #2b6cb0 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.18) !important;
+  background-color: #ffffff !important;
+}
+
+select:disabled {
+  background-color: #f8fafc !important;
+  color: #94a3b8 !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Dropdown Options Popup (Windows/Chromium/Firefox/Safari) */
+select option,
+select optgroup {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 12px;
+}
+
+select option:checked {
+  background-color: #e1eff8 !important;
+  color: #172e4b !important;
+  font-weight: 700;
+}
+
+select option:hover,
+select option:focus {
+  background-color: #f0f6fa !important;
+  color: #2b6cb0 !important;
+}
+
+/* Custom Dropdown Menus & Popovers */
+.dropdown-menu,
+[role="listbox"],
+[data-dropdown-menu],
+.custom-dropdown-panel {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+}
+
+
+

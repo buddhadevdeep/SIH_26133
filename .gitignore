@@ -1,0 +1,17 @@
+.DS_Store
+node_modules
+dist
+backend/node_modules
+backend/dist
+backend/.env
+frontEnd/node_modules
+frontEnd/dist
+frontEnd/.env
+frontEnd/Frontend/node_modules
+frontEnd/Frontend/dist
+frontEnd/Frontend/.env
+M2/.env
+M2/**/__pycache__
+M2/**/*.pyc
+M2/archive/
+

@@ -1,0 +1,17 @@
+{
+  "short_name": "HealthConnect",
+  "name": "HEALTHCONNECT Public Healthcare Platform",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#0f766e",
+  "display": "standalone",
+  "orientation": "portrait",
+  "description": "Integrated Public Healthcare Access, Care Continuity, Referral & Resource Intelligence Platform (SIH26133)"
+}

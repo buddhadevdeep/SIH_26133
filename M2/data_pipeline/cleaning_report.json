@@ -1,0 +1,18 @@
+{
+  "raw_records_sym_file": 192715,
+  "clean_records_sym_file": 163727,
+  "duplicates_removed": 28988,
+  "unique_diseases_in_clean_subset": 254,
+  "total_canonical_symptoms": 377,
+  "raw_data_csv_columns": 378,
+  "raw_data_csv_diseases": 713,
+  "missing_values_handled": 0,
+  "normalization_applied": [
+    "lowercasing",
+    "whitespace collapse",
+    "punctuation standardization",
+    "symptom list deduplication and sorting",
+    "alias and synonym dictionary resolution",
+    "triage urgency assignment"
+  ]
+}

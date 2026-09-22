@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="gu,en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AarogyaMitra | SIH Grounded Healthcare AI Assistant</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- TOP HEADER -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            <path d="M12 5v6m-3-3h6" stroke="#10b981" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">AarogyaMitra <span>AI</span></div>
+          <div class="brand-sub">Smart India Hackathon • Grounded Clinical Assistant</div>
+        </div>
+      </div>
+
+      <div class="header-badges">
+        <div class="badge badge-pulse">
+          <span class="pulse-dot"></span>
+          <span>MongoDB Atlas: Connected</span>
+        </div>
+        <div class="badge badge-ai">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          <span>Gemini 3.1 + ML Differential</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="chat-tab">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        AI Healthcare Chat
+      </button>
+      <button class="nav-btn" data-tab="ml-tab">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        Symptom Checker (ML)
+      </button>
+      <button class="nav-btn" data-tab="inventory-tab">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+          <path d="m8.5 8.5 7 7"/>
+        </svg>
+        Medicine Stock Live
+      </button>
+      <button class="nav-btn" data-tab="hospital-tab">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6m-3-3v6M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/>
+        </svg>
+        Hospitals & Services
+      </button>
+      <button class="nav-btn" data-tab="ehr-tab">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        Patient EHR Records
+      </button>
+    </nav>
+
+    <!-- TAB CONTENTS -->
+    <main class="main-content">
+
+      <!-- TAB 1: CHAT INTERFACE -->
+      <section id="chat-tab" class="tab-pane active">
+        <div class="chat-wrapper">
+          <!-- QUICK SUGGESTIONS & CONTROLS -->
+          <div class="prompt-chips">
+            <span class="chip-label">Quick Prompts:</span>
+            <button class="chip chip-guj" data-query="સાહેબ મને ત્રણ દિવસથી તાવ છે, શરીર દુખે છે ને બહુ નબળાઈ લાગે છે">🎙️ ગુજરાતી: તાવ, શરીર દર્દ અને નબળાઈ</button>
+            <button class="chip" data-query="Which medicine is available for fever in Rajkot hospitals?">💊 Fever Medicine Stock</button>
+            <button class="chip" data-query="Which hospital provides Maternal Care or Gynecology in Rajkot?">🏥 Maternal Care Services</button>
+            <button class="chip" data-query="Which hospital is located in Gondal and what are the operational hours?">📍 PHC Gondal Info</button>
+            <button class="chip" data-query="What chronic conditions and allergies does patient PAT-1001 have?">👤 PAT-1001 EHR Lookup</button>
+            <button class="chip chip-warn" data-query="I have sudden crushing chest pain and cannot breathe!">🚨 Chest Pain Emergency</button>
+            <button class="chip chip-reset" id="resetChatBtn" title="Clear conversation memory and start fresh" style="margin-left: auto; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); color: #f87171; font-weight: 600;">🔄 New Consultation</button>
+          </div>
+
+          <!-- VOICE RECORDING STATUS BANNER -->
+          <div id="voiceStatusBanner" class="voice-status-banner" style="display: none;">
+            <div class="recording-indicator">
+              <span class="rec-dot"></span>
+              <span id="recordingText">Listening in Gujarati (Sarvam Saaras ASR)... Speak now!</span>
+            </div>
+            <div class="recording-timer" id="recordingTimer">00:03</div>
+            <button id="cancelRecBtn" class="cancel-rec-btn">Cancel</button>
+          </div>
+
+          <!-- PERSISTENT MEDICAL DISCLAIMER BANNER -->
+          <div class="medical-disclaimer-banner">
+            <span class="disc-icon">⚠️</span>
+            <div class="disc-text">
+              <strong>Medical Disclaimer:</strong> I am an AI chatbot. Information and differential predictions are for guidance only and not 100% perfect. For accurate diagnosis, prescriptions, and treatment, please consult a qualified doctor or visit your nearest health center. (સચોટ નિદાન માટે ડૉક્ટરનો સંપર્ક કરો).
+            </div>
+          </div>
+
+          <!-- MESSAGE FEED -->
+          <div class="chat-feed" id="chatFeed">
+            <div class="message-card bot-msg">
+              <div class="msg-header">
+                <div class="bot-avatar">AI</div>
+                <div class="msg-meta">
+                  <span class="author">AarogyaMitra Assistant</span>
+                  <span class="time">Just now</span>
+                </div>
+              </div>
+              <div class="msg-body">
+                <p><strong>નમસ્તે! (Hello!)</strong> I am your clinical healthcare assistant for Smart India Hackathon.</p>
+                <p>I support <strong>Sarvam AI Speech-to-Text & Text-to-Speech in natural Gujarati</strong>. Click the 🎙️ <strong>Mic</strong> button to speak your symptoms or healthcare queries in Gujarati!</p>
+                <ul>
+                  <li>Live medicine availability across network hospitals</li>
+                  <li>Hospital services, fees, and operational timings</li>
+                  <li>Symptom differential analysis with probability confidence</li>
+                  <li>Patient longitudinal medical history (PAT-1001, PAT-1002)</li>
+                  <li>Emergency red-flag triage guidance (108 protocol)</li>
+                </ul>
+                <div class="ai-warning-box">
+                  <span class="warning-icon">⚠️</span>
+                  <span><strong>AI Notice:</strong> I am an AI chatbot, not a doctor. AI answers are not 100% perfect. Always consult a licensed doctor for accurate clinical diagnosis.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INPUT COMPOSER -->
+          <div class="chat-composer">
+            <form id="chatForm" class="composer-form">
+              <div class="input-container">
+                <textarea 
+                  id="queryInput" 
+                  rows="2" 
+                  placeholder="Ask a question (e.g. 'સાહેબ મને ત્રણ દિવસથી તાવ છે, શરીર દુખે છે...' or speak using Mic)..."
+                  required
+                ></textarea>
+                <div class="composer-actions">
+                  <div class="voice-controls-group">
+                    <select id="voiceLangSelect" class="voice-lang-select" title="Voice Recognition & TTS Language">
+                      <option value="gu-IN" selected>🇬🇺 Gujarati (ગુજરાતી)</option>
+                      <option value="hi-IN">🇮🇳 Hindi (हिंदी)</option>
+                      <option value="en-IN">🇬🇧 English</option>
+                    </select>
+                    <label class="auto-voice-toggle" title="Automatically play Gujarati voice response upon answer">
+                      <input type="checkbox" id="autoVoiceToggle" checked>
+                      <span>🔊 Auto Voice</span>
+                    </label>
+                  </div>
+                  <div class="patient-picker">
+                    <label for="userPatientId">Patient ID:</label>
+                    <select id="userPatientId">
+                      <option value="">Public / Guest</option>
+                      <option value="PAT-1001">PAT-1001 (Ramesh Bhai Patel)</option>
+                      <option value="PAT-1002">PAT-1002 (Priya Ben Vaghela)</option>
+                    </select>
+                  </div>
+                  <button type="button" id="micBtn" class="mic-btn" title="Speak in Gujarati / English using Sarvam AI">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                      <line x1="12" y1="19" x2="12" y2="23"/>
+                      <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                    <span>Speak Mic</span>
+                  </button>
+                  <button type="submit" id="sendBtn" class="send-btn">
+                    <span>Ask Assistant</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13"/>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB 2: SYMPTOM CHECKER (ML) -->
+      <section id="ml-tab" class="tab-pane">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div>
+              <h2>🩺 Machine Learning Differential Diagnosis Engine</h2>
+              <p class="panel-sub">Trained on 163,727 non-duplicate records across 254 diseases • Top-3 Accuracy: 95.37% • Sub-2ms inference</p>
+            </div>
+            <span class="badge badge-accent">Calibrated Naive Bayes</span>
+          </div>
+
+          <div class="symptom-selector-box">
+            <label>Select or Type Patient Symptoms:</label>
+            <div class="symptom-tag-input">
+              <div id="selectedSymptoms" class="selected-tags"></div>
+              <input type="text" id="symptomInput" placeholder="Type a symptom (e.g. fever, chest pain, shortness of breath, nausea)...">
+            </div>
+            <div class="quick-symptom-suggestions">
+              <span>Quick add:</span>
+              <button class="add-sym-btn" data-sym="fever">+ Fever</button>
+              <button class="add-sym-btn" data-sym="headache">+ Headache</button>
+              <button class="add-sym-btn" data-sym="shortness of breath">+ Shortness of breath</button>
+              <button class="add-sym-btn" data-sym="sharp chest pain">+ Sharp chest pain</button>
+              <button class="add-sym-btn" data-sym="nausea">+ Nausea</button>
+              <button class="add-sym-btn" data-sym="vomiting">+ Vomiting</button>
+              <button class="add-sym-btn" data-sym="dizziness">+ Dizziness</button>
+              <button class="add-sym-btn" data-sym="diarrhea">+ Diarrhea</button>
+              <button class="add-sym-btn" data-sym="joint pain">+ Joint pain</button>
+              <button class="add-sym-btn" data-sym="cough">+ Cough</button>
+            </div>
+            <div class="action-row">
+              <button id="runPredictBtn" class="primary-btn">Calculate Differential Diagnosis</button>
+              <button id="clearSymptomsBtn" class="secondary-btn">Clear All</button>
+            </div>
+          </div>
+
+          <div id="mlResultsContainer" class="ml-results-area" style="display: none;">
+            <div class="results-header">
+              <h3>Differential Diagnosis Results</h3>
+              <div id="mlUrgencyBadge" class="urgency-badge">ROUTINE</div>
+            </div>
+            <div id="mlPredictionList" class="prediction-bars"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: MEDICINE STOCK LIVE -->
+      <section id="inventory-tab" class="tab-pane">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div>
+              <h2>💊 Live Medicine Inventory & Facility Stocks</h2>
+              <p class="panel-sub">Real-time stock from healthcare_db.hospitalmedicines joined with facility records</p>
+            </div>
+            <div class="search-box">
+              <input type="text" id="medSearchInput" placeholder="Search medicine (e.g. Paracetamol, ORS, Amoxicillin)...">
+              <button id="searchMedBtn" class="primary-btn">Search Stock</button>
+            </div>
+          </div>
+
+          <div id="medicineGrid" class="cards-grid">
+            <div class="loading-spinner">Loading network inventory...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: HOSPITALS & SERVICES -->
+      <section id="hospital-tab" class="tab-pane">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div>
+              <h2>🏥 Network Hospitals & Clinical Services</h2>
+              <p class="panel-sub">Geospatial facilities and service fee guidelines in Rajkot District</p>
+            </div>
+            <div class="search-box">
+              <input type="text" id="hospitalSearchInput" placeholder="Filter by hospital or service name...">
+              <button id="searchHospitalBtn" class="primary-btn">Filter</button>
+            </div>
+          </div>
+
+          <div id="hospitalGrid" class="cards-grid">
+            <div class="loading-spinner">Loading facility registry...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: PATIENT EHR -->
+      <section id="ehr-tab" class="tab-pane">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div>
+              <h2>👤 Patient Longitudinal Health Records (EHR)</h2>
+              <p class="panel-sub">Secure access to demographic data, ABHA IDs, chronic conditions, and verified allergies</p>
+            </div>
+            <div class="patient-select-bar">
+              <label>Select Patient:</label>
+              <button class="patient-pill active" data-pid="PAT-1001">PAT-1001 (Ramesh Bhai Patel)</button>
+              <button class="patient-pill" data-pid="PAT-1002">PAT-1002 (Priya Ben Vaghela)</button>
+            </div>
+          </div>
+
+          <div id="patientDetails" class="ehr-details-container">
+            <div class="loading-spinner">Loading patient record...</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

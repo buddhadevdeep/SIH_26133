@@ -1,0 +1,14 @@
+{
+  "model_type": "TF-IDF + Multinomial Naive Bayes",
+  "num_classes": 254,
+  "train_samples": 130981,
+  "test_samples": 32746,
+  "train_duration_seconds": 2.75,
+  "top_1_accuracy": 0.829,
+  "top_3_accuracy": 0.9537,
+  "top_5_accuracy": 0.9798,
+  "weighted_precision": 0.845,
+  "weighted_recall": 0.829,
+  "weighted_f1_score": 0.8253,
+  "avg_test_inference_ms": 0.017
+}
