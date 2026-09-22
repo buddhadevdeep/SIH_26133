@@ -8,7 +8,8 @@ let activeConnectionsCount = 0;
 export function initializeSockets(server: HttpServer): SocketIOServer {
   ioInstance = new SocketIOServer(server, {
     cors: {
-      origin: '*',
+      origin: true,
+      credentials: true,
       methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
     },
   });

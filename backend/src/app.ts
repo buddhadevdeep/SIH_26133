@@ -28,10 +28,11 @@ app.use(
 
 app.use(
   cors({
-    origin: '*',
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'x-refresh-token', 'Origin', 'X-Requested-With'],
+    exposedHeaders: ['Authorization', 'Content-Range', 'X-Total-Count'],
   })
 );
 
